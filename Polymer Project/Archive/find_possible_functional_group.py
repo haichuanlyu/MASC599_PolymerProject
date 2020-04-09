@@ -1,3 +1,6 @@
+# Finds strings which are possibly appeared as functional groups in smiles_mod.txt.
+# The goal of this process is to generate new features from SMILES strings.
+
 import numpy as np
 
 # File save location
