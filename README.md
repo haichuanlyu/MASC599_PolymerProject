@@ -8,5 +8,5 @@
 
 
 In Archive folder:
-- **check_formula.py** checks the relation of index number and smiles_mod.txt by count the Carbon atom number in a SMILES string.
+- **count_carbon_in_formula.py** checks the relation of index number and smiles_mod.txt by count the Carbon atom number in a SMILES string.
 - **find_possible_functional_group.py** finds strings which are possibly appeared as functional groups in smiles_mod.txt. The goal of this process is to generate new features from SMILES strings.

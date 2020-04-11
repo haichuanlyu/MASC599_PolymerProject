@@ -6,7 +6,7 @@ import numpy as np
 # What chemical groups you want to investigate? Add them to the list below.
 # Because by an unknown reason, python cannot count a string with '#', therefore,
 # substitute all '#' to 'A', because 'A' does not exist in SMILES Strings
-check_list = ['C(F)(F)(F)', 'CAN', 'C(=O)N(R)C(=O)', 'F', 'S']  # 'CAN' here is 'C#N' actually
+check_list = ['(C=CC3=CC=CC=C3)']  # 'CAN' here is 'C#N' actually
 
 # File save location
 txt_name = 'smiles_mod.txt'    # The text file storing SMILES
@@ -17,6 +17,7 @@ csv_save_loc = ''
 
 def count_chemical_group(formula, functional_group):
     """
+    Using sliding window method to count functional group
     :type functional_group: the chemical group you want to count the appearing times
     :type formula: the formula you want to check
     :rtype: the appearing times of functional group in the formula
