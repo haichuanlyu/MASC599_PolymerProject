@@ -6,11 +6,32 @@ import numpy as np
 # What chemical groups you want to investigate? Add them to the list below.
 # Because by an unknown reason, python cannot count a string with '#', therefore,
 # substitute all '#' to 'A', because 'A' does not exist in SMILES Strings
-check_list = ['(C=CC3=CC=CC=C3)']  # 'CAN' here is 'C#N' actually
+# 'CAN' here is 'C#N' actually
+check_list = ['UID1', 'O1', 'O2',
+              'UID2', 'S1', 'S2',
+              'UID3', 'N2', 'N2(C(C)(C)(C))', 'N2 result', 'N1', 'N1(C(C)(C)(C))', 'N1 result',
+              'UID4', 'C3=CC=CC=C3', 'C4=CC=CC=C4',
+              'CAN',
+              'UID6', 'C(F)(F)(F)', 'C(F)(F)F',
+              'C(C)(C)(C)',
+              'UID8', 'C45CC6CC(CC(C6)C4)C5', 'C34CC5CC(CC(C5)C3)C4', 'C23CC4CC(C2)CC(C4)C3', 'C12CC3CC(CC(C3)C1)C2',
+              'C(=O)N(R)C(=O)',
+              'C=CC3=CC=CC=C3',
+              '/C=C/C3=CC=CC=C3',
+              'UID12', 'C3C(=O)N()C(=O)C3', 'C2C(=O)N()C(=O)C2',
+              'UID13', 'C3C(=O)N(C)C(=O)C3', 'C2C(=O)N(C)C(=O)C2',
+              'UID14', 'C3C(=O)N(C(C)(C)(C))C(=O)C3', 'C2C(=O)N(C(C)(C)(C))C(=O)C2',
+              'UID15', 'C3C(=O)N(C(F)(F)(F))C(=O)C3', 'C2C(=O)N(C(F)(F)(F))C(=O)C2',
+              'UID16', 'C2C(=O)N(C3=CC=CC=C3)C(=O)C2', 'C3C(=O)N(C4=CC=CC=C4)C(=O)C3',
+              'UID17', 'C2C(=O)N(C3=CC=C(CAN)C=C3)C(=O)C2', 'C3C(=O)N(C4=CC=C(CAN)C=C4)C(=O)C3',
+              'UID18', 'C2C(=O)N(C3=CC=C(C(F)(F)F)C=C3)C(=O)C2', 'C3C(=O)N(C4=CC=C(C(F)(F)F)C=C4)C(=O)C3',
+              'UID19', 'C3CN(C45CC6CC(CC(C6)C4)C5)CC3', 'C2CN(C34CC5CC(CC(C5)C3)C4)CC2',
+              'UID20', 'C2CN(C)CC2', 'C3CN(C)CC3',
+              'UID21', 'N2(C(C)(C)(C))', 'N1(C(C)(C)(C))', 'C3CN(C(C)(C)(C))CC3', 'C2CN(C(C)(C)(C))CC2']
 
 # File save location
-txt_name = 'smiles_mod.txt'    # The text file storing SMILES
-csv_name = 'functional_group_check.csv'     # Name of the csv file which stores the counting result
+txt_name = 'smiles_mod.txt'  # The text file storing SMILES
+csv_name = 'functional_group_check.csv'  # Name of the csv file which stores the counting result
 txt_loc = ''
 csv_save_loc = ''
 
@@ -25,7 +46,7 @@ def count_chemical_group(formula, functional_group):
     counter = 0
     formula_len = len(formula)
     group_len = len(functional_group)
-    if 'R' not in functional_group:     # Normal condition
+    if 'R' not in functional_group:  # Normal condition
         for checker_loc in range(formula_len - group_len + 1):
             if formula[checker_loc: checker_loc + group_len] == functional_group:
                 counter += 1
@@ -33,7 +54,7 @@ def count_chemical_group(formula, functional_group):
         # For count imide exclusive
         # Limitation: cannot deal with the situation that imide group appearing on R-group
         checker1_loc = 0
-        checker2_loc = 6    # location is defined as number of char ahead of checker1
+        checker2_loc = 6  # location is defined as number of char ahead of checker1
         # XXXXXXXXXXC(=O)N(XXXXX)C(=O)XXXXXXXXXX
         #           1-----       2----             1 -> check 6 char, 2 -> check 5 char
         while checker1_loc < formula_len - 11 + 1:
