@@ -8,20 +8,21 @@ compound_save_path = 'polymer_project_dataset_Ver4.0_deduplicate(compound).csv'
 
 
 def main(csv_path_and_name, save_path):
-    csv_file = pd.read_csv(csv_path_and_name)
-    res = pd.DataFrame(columns=csv_file.columns)
-    # res.loc[0] = csv_file.iloc[0]
-    # print(csv_file.iloc[0]['PROPERTY: SMILES'])
+
+    # alias
     DC = 'PROPERTY: Dielectric Constant'
     SMILES = 'PROPERTY: SMILES'
 
-    appear_dict = {}
+    csv_file = pd.read_csv(csv_path_and_name)
 
-    res_index = 0
+    appear_dict = {}  # key: SMILES, value: [index in res, appear times]
+    res = pd.DataFrame(columns=csv_file.columns)
+
+    res_index = 0  # index of result DataFrame
     for i in range(len(csv_file)):
         current_SMILES = csv_file.iloc[i][SMILES]
         if current_SMILES not in appear_dict:
-            appear_dict[current_SMILES] = [res_index, 1]  # [index in res, appear times]
+            appear_dict[current_SMILES] = [res_index, 1]  # input a new element into appear_dict
             res.loc[res_index] = csv_file.iloc[i]
             res_index += 1
         else:
@@ -35,6 +36,7 @@ def main(csv_path_and_name, save_path):
     res.to_csv(save_path)
 
 
+# Main Function
 main(basic_csv_path_and_name, basic_save_path)
 main(compound_csv_path_and_name, compound_save_path)
 
