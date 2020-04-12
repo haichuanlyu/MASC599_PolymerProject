@@ -8,7 +8,7 @@ csv_save_loc = ''
 
 # Import all formula into a numpy list
 all_formula_list = np.genfromtxt(f'{txt_loc}{txt_name}', dtype='str')
-
+print(len(all_formula_list))
 # valid_result = set(all_formula_list)
 #
 # open(f'{csv_save_loc}{csv_name}', 'w').close()
