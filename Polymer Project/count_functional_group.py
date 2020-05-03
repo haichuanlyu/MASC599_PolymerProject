@@ -24,38 +24,37 @@ check_list_basic = [
 
 # for compound functional groups check
 check_list = [
-    'UID1', 'O1', 'O2',  # =sum
-    'UID2', 'S1', 'S2',  # =sum
-    'UID3', 'N2', 'N1',  # =sum
-    'N2(C(C)(C)(C))', 'N1(C(C)(C)(C))',  # -UID22 (2 sub conditions)
-    'UID4', 'C3=CC=CC=C3', 'C4=CC=CC=C4',  # =sum
-    'C=CC3=CC=CC=C3', '/C=C/C3=CC=CC=C3',  # -UID10, -UID11
+    'UID1', 'O1', 'O2',  # = sum
+    'UID2', 'S1', 'S2',  # = sum
+    'UID3', 'N2', 'N1', 'C3CN()CC3', 'C2CN()CC2',  # = sum
+    'N2(C(C)(C)(C))', 'N1(C(C)(C)(C))', 'N2(C)', 'N1(C)',  # -UID22 (2 sub conditions), UID 21 (2 sub conditions)
+    'UID4', 'C3=CC=CC=C3', 'C4=CC=CC=C4',  # = sum - UID10 - UID11
     'C2C(=O)N(C3=CC=CC=C3)C(=O)C2', 'C3C(=O)N(C4=CC=CC=C4)C(=O)C3',  # -UID16
     'CAN',  # UID5
-    'UID6', 'C(F)(F)(F)', 'C(F)(F)F',  # =sum
-    'C3C(=O)N(C(F)(F)(F))C(=O)C3', 'C2C(=O)N(C(F)(F)(F))C(=O)C2',  # -UID15
-    'C2C(=O)N(C3=CC=C(C(F)(F)F)C=C3)C(=O)C2', 'C3C(=O)N(C4=CC=C(C(F)(F)F)C=C4)C(=O)C3',  # -UID18
-    'UID7', 'C(C)(C)(C)',  # =sum
-    'C3C(=O)N(C(C)(C)(C))C(=O)C3', 'C2C(=O)N(C(C)(C)(C))C(=O)C2',  # -UID14
-    'N2(C(C)(C)(C))', 'N1(C(C)(C)(C))', 'C3CN(C(C)(C)(C))CC3', 'C2CN(C(C)(C)(C))CC2',  # -UID22
-    'UID8', 'C45CC6CC(CC(C6)C4)C5', 'C34CC5CC(CC(C5)C3)C4', 'C23CC4CC(C2)CC(C4)C3', 'C12CC3CC(CC(C3)C1)C2',  # =sum
-    'C2C(=O)N(C34CC5CC(CC(C5)C3)C4)C(=O)C2', 'C3C(=O)N(C45CC6CC(CC(C6)C4)C5)C(=O)C3',  # -UID19
-    'C3CN(C45CC6CC(CC(C6)C4)C5)CC3', 'C2CN(C34CC5CC(CC(C5)C3)C4)CC2',  # -UID20
+    'UID6', 'C(F)(F)(F)', 'C(F)(F)F',  # = sum - UID15 - UID18 - UID24 - UID26
+    'UID7', 'C(C)(C)(C)',  # = sum - UID14 - UID22
+    'UID8', 'C45CC6CC(CC(C6)C4)C5', 'C34CC5CC(CC(C5)C3)C4', 'C23CC4CC(C2)CC(C4)C3',
+    'C12CC3CC(CC(C3)C1)C2',  # = sum - UID19 - UID20
     'C(=O)N(R)C(=O)',  # = num - UID(12,13,14,15,16,17,18,19)
     'C=CC3=CC=CC=C3',  # UID 10
     '/C=C/C3=CC=CC=C3',  # UID 11
-    'UID12', 'C3C(=O)N()C(=O)C3', 'C2C(=O)N()C(=O)C2',  # =sum
-    'UID13', 'C3C(=O)N(C)C(=O)C3', 'C2C(=O)N(C)C(=O)C2',  # =sum
-    'UID14', 'C3C(=O)N(C(C)(C)(C))C(=O)C3', 'C2C(=O)N(C(C)(C)(C))C(=O)C2',  # =sum
-    'UID15', 'C3C(=O)N(C(F)(F)(F))C(=O)C3', 'C2C(=O)N(C(F)(F)(F))C(=O)C2',  # =sum
-    'UID16', 'C2C(=O)N(C3=CC=CC=C3)C(=O)C2', 'C3C(=O)N(C4=CC=CC=C4)C(=O)C3',  # =sum
-    'UID17', 'C2C(=O)N(C3=CC=C(CAN)C=C3)C(=O)C2', 'C3C(=O)N(C4=CC=C(CAN)C=C4)C(=O)C3',  # =sum
-    'UID18', 'C2C(=O)N(C3=CC=C(C(F)(F)F)C=C3)C(=O)C2', 'C3C(=O)N(C4=CC=C(C(F)(F)F)C=C4)C(=O)C3',  # =sum
-    'UID19', 'C2C(=O)N(C34CC5CC(CC(C5)C3)C4)C(=O)C2', 'C3C(=O)N(C45CC6CC(CC(C6)C4)C5)C(=O)C3',  # =sum
-    'UID20', 'C3CN(C45CC6CC(CC(C6)C4)C5)CC3', 'C2CN(C34CC5CC(CC(C5)C3)C4)CC2',  # =sum
-    'UID21', 'C2CN(C)CC2', 'C3CN(C)CC3',  # =sum
-    'UID22', 'N2(C(C)(C)(C))', 'N1(C(C)(C)(C))', 'C3CN(C(C)(C)(C))CC3', 'C2CN(C(C)(C)(C))CC2',  # =sum
-    'UID23', 'C3CN(C4=CC=CC=C4)CC3', 'C2CN(C3=CC=CC=C3)CC2'  # =sum
+    'UID12', 'C3C(=O)N()C(=O)C3', 'C2C(=O)N()C(=O)C2',  # = sum
+    'UID13', 'C3C(=O)N(C)C(=O)C3', 'C2C(=O)N(C)C(=O)C2',  # = sum
+    'UID14', 'C3C(=O)N(C(C)(C)(C))C(=O)C3', 'C2C(=O)N(C(C)(C)(C))C(=O)C2',  # = sum
+    'UID15', 'C3C(=O)N(C(F)(F)(F))C(=O)C3', 'C2C(=O)N(C(F)(F)(F))C(=O)C2',  # = sum
+    'UID16', 'C2C(=O)N(C3=CC=CC=C3)C(=O)C2', 'C3C(=O)N(C4=CC=CC=C4)C(=O)C3',  # = sum
+    'UID17', 'C2C(=O)N(C3=CC=C(CAN)C=C3)C(=O)C2', 'C3C(=O)N(C4=CC=C(CAN)C=C4)C(=O)C3',  # = sum
+    'UID18', 'C2C(=O)N(C3=CC=C(C(F)(F)F)C=C3)C(=O)C2', 'C3C(=O)N(C4=CC=C(C(F)(F)F)C=C4)C(=O)C3',  # = sum
+    'UID19', 'C2C(=O)N(C34CC5CC(CC(C5)C3)C4)C(=O)C2', 'C3C(=O)N(C45CC6CC(CC(C6)C4)C5)C(=O)C3',  # = sum
+    'UID20', 'C3CN(C45CC6CC(CC(C6)C4)C5)CC3', 'C2CN(C34CC5CC(CC(C5)C3)C4)CC2',  # = sum
+    'UID21', 'C2CN(C)CC2', 'C3CN(C)CC3', 'N2(C)', 'N1(C)',  # = sum
+    'UID22', 'N2(C(C)(C)(C))', 'N1(C(C)(C)(C))', 'C3CN(C(C)(C)(C))CC3', 'C2CN(C(C)(C)(C))CC2',  # = sum
+    'UID23', 'C3CN(C4=CC=CC=C4)CC3', 'C2CN(C3=CC=CC=C3)CC2',  # =sum
+    'UID24', 'C2CN(C3=CC=C(C(F)(F)F)C=C3)CC2', 'C3CN(C4=CC=C(C(F)(F)F)C=C4)CC3',  # = sum
+    'UID25', 'C2CN(C3=CC=C(CAN)C=C3)CC2', 'C3CN(C4=CC=C(CAN)C=C4)CC3',  # = sum
+    'UID26', 'C2CN(C(F)(F)(F))CC2', 'C3CN(C(F)(F)(F))CC3',  # = sum
+    'C(F)(F)C',  # UID27
+    'C(F)C',  # UID28
 ]
 
 # File save location
